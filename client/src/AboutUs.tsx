@@ -22,6 +22,7 @@ export class AboutUs extends Component<AboutUsProps, {}> {
   
   render = (): JSX.Element => {
     return <div>
+            <img src="./image/logo.jpg" alt="ChatGPT Checker" />
             <div>
               <div >
                 <h2>Yuekai Xu</h2>
@@ -33,7 +34,7 @@ export class AboutUs extends Component<AboutUsProps, {}> {
               </div>
             </div>;
             <div>
-            <button type="button" onClick={this.doBackClick}>Back</button>
+              <button type="button" onClick={this.doBackClick}>Back</button>
             </div>
           </div>
   };  
