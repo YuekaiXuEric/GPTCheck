@@ -1,7 +1,7 @@
 {
-  "name": "cse331-hw-wedding-server",
+  "name": "gptcheck-server",
   "version": "0.0.1",
-  "description": "CSE 331 Wedding Server",
+  "description": "Client-Side of Checker for GPT-Generated Text",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc --build tsconfig.json",

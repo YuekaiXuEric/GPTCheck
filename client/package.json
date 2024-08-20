@@ -1,7 +1,7 @@
 {
-  "name": "cse331-hw-wedding-client",
+  "name": "gptcheck-client",
   "version": "0.0.1",
-  "description": "CSE 331 Wedding",
+  "description": "Client-Side of Checker for GPT-Generated Text",
   "main": "",
   "scripts": {
     "build": "webpack --config src/webpack.config.js",
