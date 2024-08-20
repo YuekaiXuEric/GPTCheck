@@ -1,3 +1,4 @@
+![Screenshot of the application](client/src/image/logo.jpg)
 # GPTCheck: AI-Generated Text Detection Website
 
 This project is a Flask-based Website that uses a fine-tuned DeBERTa model to detect whether a given text is AI-generated or human-written. Our model achieve Bronze Medal, Top 8% on Kaggle - LLM Detect AI Generated Text competition[https://www.kaggle.com/competitions/llm-detect-ai-generated-text].
