@@ -1,5 +1,5 @@
 {
-  "name": "GPTCheck_client",
+  "name": "gptcheck-client",
   "version": "0.0.1",
   "description": "Client-Side of Checker for GPT-Generated Text",
   "main": "",
