@@ -1,6 +1,8 @@
 import React, { Component, MouseEvent } from "react";
 import { MAX_CHAR_ALLOWED, MIN_CHAR_ALLOWED, AI_PROB_THRESHOLD, MIX_PROB_THRESHOLD } from "./config";
 import { isRecord } from './record';
+import { LOADING_GIF, LOGO } from "./assets"
+import "./styles/Submit.css";
 
 type SubmitProps = {
   initialText: string;
@@ -34,49 +36,40 @@ export class Submit extends Component<SubmitProps, SubmitState> {
 
   render = (): JSX.Element => {
     return <div>
-      <img src="./image/logo.jpg" alt="ChatGPT Checker" />
-      <div>
-        <div>
-          <h1>Input Text to Check</h1>
-          <div style={{ position: 'relative' }}>
-            <input type="text" onChange={this.doTextInputChange} value={this.state.currentText} />
-            <div style={{ position: 'absolute', bottom: 0, right: 0, margin: 5 }}>
-              {this.state.charCount}
-            </div>
+      <img className="logo" src={LOGO} alt="ChatGPT Checker"/>
+      <div className="inretaction-container">
+        <div className="input-container">
+          <div className="input-and-charcount">
+            <h1>Input Text to Check</h1>
+            <textarea onChange={this.doTextInputChange} value={this.state.currentText}></textarea>
+            <p>{this.state.charCount}/{MAX_CHAR_ALLOWED + ""} characters</p>
           </div>
         </div>
-        <div>
+        <div className="result-container">
           <h1>Checking Result</h1>
-          <p>{this.state.currentResult}</p>
+          <p>{this.state.message === "" ? this.state.currentResult : this.state.message}</p>
         </div>
       </div>
-      <div>
+      <div className="submit-container">
         <button type="button" onClick={this.doSubmitClick}>Check</button>
       </div>
       {this.state.loading && this.renderLoadingModal()}
-      {this.renderMessage()}
-      <div>
-        <button type="button" onClick={this.doAboutUsClick}>Back</button>
+      <div className="about-us-container">
+        <button type="button" onClick={this.doAboutUsClick}>About Us</button>
       </div>
     </div>
   }
 
-  doTextInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  doTextInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
     this.setState({ currentText: event.target.value, charCount: event.target.value.trim().length, message: "" });
   }
 
-  renderMessage = (): JSX.Element => {
-    return <p>{this.state.message}</p>
-  };
-
   renderLoadingModal = (): JSX.Element => {
     return (
-      <div style={{ position: 'fixed', top: '50%', left: 0, width: '100%', height: '50%', background: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
-        <div style={{ background: 'white', padding: 20, borderRadius: 5 }}>
-          <img src="./image/loading.gif" alt="Loading" />
+        <div className="loading-modal">
+          <img src={LOADING_GIF} alt="Loading" />
           <button type="button" onClick={this.doCancelClick}>Cancel Submission</button>
         </div>
-      </div>
     );
   }
 

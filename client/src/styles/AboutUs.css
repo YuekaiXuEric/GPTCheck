@@ -1,0 +1,42 @@
+
+.name-card {
+  background-color: #f0ebeb;
+  width: 25%;
+  margin: 0 2%;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.name {
+  color: #efb43f; /* Bright color for headers */
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.info {
+  color: #333;
+  font-size: 16px;
+  margin-top: 0;
+}
+
+.back-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-container button {
+  background-color: #ffdd57; /* Bright button color */
+  color: #000;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.back-container button:hover {
+  background-color: #ffc107;
+}

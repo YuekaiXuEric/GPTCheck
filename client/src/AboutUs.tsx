@@ -1,4 +1,6 @@
 import React, { Component, MouseEvent } from "react";
+import { LOGO } from "./assets";
+import "./styles/AboutUs.css";
 
 type AboutUsProps = {
   /** Most Recent Input Text */
@@ -22,18 +24,18 @@ export class AboutUs extends Component<AboutUsProps, {}> {
   
   render = (): JSX.Element => {
     return <div>
-            <img src="./image/logo.jpg" alt="ChatGPT Checker" />
-            <div>
-              <div >
-                <h2>Yuekai Xu</h2>
-                <p>University of Washington, Seattle</p>
+            <img className="logo" src={LOGO} alt="ChatGPT Checker" />
+            <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'end', height: '60vh', marginTop: '0' }}>
+              <div className="name-card">
+                <h2 className="name">Yuekai Xu</h2>
+                <p className="info">University of Washington, Seattle</p>
               </div>
-              <div>
-                <h2>Zhiyuan Jia</h2>
-                <p>University of Washington, Seattle</p>
+              <div className="name-card">
+                <h2 className="name">Zhiyuan Jia</h2>
+                <p className="info">University of Washington, Seattle</p>
               </div>
-            </div>;
-            <div>
+            </div>
+            <div className="back-container">
               <button type="button" onClick={this.doBackClick}>Back</button>
             </div>
           </div>

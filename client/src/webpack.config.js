@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const info = {
   TITLE: 'GPT Checker'
-}
+};
 
 const config = {
   mode: 'development',
@@ -23,11 +23,11 @@ const config = {
       'Cache-Control': 'no-store',
     },
     proxy: {
-       '/api': {
-            target: 'http://localhost:8080',
-            router: () => 'http://localhost:8088',
-            logLevel: 'debug'
-       }
+      '/api': {
+        target: 'http://localhost:8080',
+        router: () => 'http://localhost:8088',
+        logLevel: 'debug'
+      }
     }
   },
 
@@ -44,14 +44,26 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.module\.css$/, // Match .module.css files
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true, // Enable CSS Modules
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/, // Regular CSS files
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader'
-        ]
+        ],
       },
       {
-        test: /\.(ico|png)$/i,
+        test: /\.(ico|png|jpe?g|gif|svg)$/i, // Image files
         use: ['file-loader'],
       },
     ]
@@ -64,7 +76,7 @@ const config = {
   },
 
   entry: {
-    main: './src/index.tsx'
+    main: './src/index.tsx',
   },
 
   output: {
@@ -86,6 +98,6 @@ const config = {
       templateParameters: { TITLE: info.TITLE }
     }),
   ],
-}
+};
 
-module.exports = [ config ];
+module.exports = [config];
