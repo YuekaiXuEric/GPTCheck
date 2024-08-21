@@ -28,7 +28,6 @@ def run_inference(input_texts):
     return result
 
 if __name__ == "__main__":
-    input_text = sys.argv[1]
-    input_texts = [input_text]
+    input_texts = ['My experience with argumentative writing could just some maybe, I’m not pretty good at writing in my high school, but I like to sure my opinions, ideas, and views. Usually for the ideas about the genre of writing is states your view and trying the search and talk it deeply. For the Death and Life of Great American Cities, I think it can by kind of the argumentative writing, because Jacobs states the opposite view for the American cities, which are different to the others. Also she has made her points of why she thing is this, for example, the north end of Boston is actually not a Slum by going there.']
     result = run_inference(input_texts)
     print(json.dumps(result))

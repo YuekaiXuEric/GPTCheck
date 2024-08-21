@@ -29,7 +29,9 @@ def run_inference():
     predictions, probabilities = predict(input_texts)
 
     result = {
+        "prediction": int(predictions[0]),
         "probability": float(probabilities[0][1]) if predictions[0] == 1 else float(probabilities[0][0]),
+        "inferred_as": "AI" if predictions[0] == 1 else "Human"
     }
     return jsonify(result)
 
