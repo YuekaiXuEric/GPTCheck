@@ -26,9 +26,8 @@ def run_inference():
     time.sleep(1.2)
     data = request.json
     input_texts = [data['text']]
-    predictions, probabilities = predict(input_texts)
+    _, probabilities = predict(input_texts)
 
-    # Probability of AI class
     ai_probability = float(probabilities[0][1])
 
     if ai_probability < 0.01:
