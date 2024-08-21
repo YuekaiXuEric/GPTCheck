@@ -61,15 +61,17 @@ export class Submit extends Component<SubmitProps, SubmitState> {
   }
 
   doTextInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    this.setState({ currentText: event.target.value, charCount: event.target.value.trim().length, message: "" });
+    this.setState({ currentText: event.target.value, charCount: event.target.value.trim().length, message: "", currentResult: "" });
   }
 
   renderLoadingModal = (): JSX.Element => {
     return (
+      <div className="loading-modal-overlay">
         <div className="loading-modal">
           <img src={LOADING_GIF} alt="Loading" />
           <button type="button" onClick={this.doCancelClick}>Cancel Submission</button>
         </div>
+      </div>
     );
   }
 
@@ -98,7 +100,6 @@ export class Submit extends Component<SubmitProps, SubmitState> {
   doCancelClick = (): void => {
     if (this.state.abortController) {
       this.state.abortController.abort();
-      this.setState({ loading: false, message: "Request cancelled by user." });
     }
   }
 
@@ -114,7 +115,7 @@ export class Submit extends Component<SubmitProps, SubmitState> {
       res.text().then(this.doSubmitError)
         .catch(() => this.doSubmitError("400 response is not text"));
     } else {
-      this.doSubmitError(`bad status code from /api/predict: ${res.status}`);
+      this.doSubmitError(`bad status code from /predict: ${res.status}`);
     }
   };
 
@@ -144,13 +145,13 @@ export class Submit extends Component<SubmitProps, SubmitState> {
   };
 
   doSubmitError = (msg: string): void => {
-    console.error("Error fetching /api/predict", `${msg}`);
+    console.error("Error fetching /predict", `${msg}`);
     this.setState({ loading: false, message: "Something went wrong with the server. Please refresh the page and try again later.", abortController: null });
   };
 
   doHandleError = (error: Error, msg: string): void => {
     if (error.name === "AbortError") {       
-      this.setState({ loading: false, message: "Request cancelled.", abortController: null });
+      this.setState({ loading: false, message: "Submission Canceled", abortController: null, currentResult: "" });
     } else {   
       this.doSubmitError(msg);
     }

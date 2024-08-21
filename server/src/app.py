@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import torch
 from transformers import DebertaV2ForSequenceClassification, DebertaV2Tokenizer
 import torch.nn.functional as F
+import time
 
 app = Flask(__name__)
 
@@ -20,8 +21,9 @@ def predict(texts):
         predictions = torch.argmax(logits, dim=1).cpu().numpy()
     return predictions, probabilities
 
-@app.route('/predict', methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 def run_inference():
+    time.sleep(1.2)
     data = request.json
     input_texts = [data['text']]
     predictions, probabilities = predict(input_texts)

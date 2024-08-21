@@ -1,5 +1,5 @@
 /** Maximum number of characters allowed in a submission */
-export const MAX_CHAR_ALLOWED: bigint = 5000n;
+export const MAX_CHAR_ALLOWED: bigint = 10000n;
 
 /** Maximum number of characters allowed in a submission */
 export const MIN_CHAR_ALLOWED: bigint = 500n;
