@@ -51,12 +51,13 @@
 }
 
 .result-container p {
-  font-size: 15pt;
+  font-size: 20pt;
   text-align: center;
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 10%;
   margin-bottom: 5%;
+  white-space: pre-wrap; /* Preserve newlines */
 }
 
 h1 {
